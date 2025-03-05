@@ -25,7 +25,6 @@ jobs:
           npm install
 
       - name: Build VitePress site
-        working-directory: ./docs
         run: npm run docs:build
 
       - name: Create .nojekyll file
