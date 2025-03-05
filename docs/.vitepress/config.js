@@ -13,7 +13,7 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
 
-  base: process.env.BASE || '/',
+  base: '/vitepress-website/',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]
   ],
