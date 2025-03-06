@@ -10,11 +10,8 @@ hero:
   image:
     src: /logo.jpg
   actions:
-    - theme: brand
-      text: Get Started
-      link:  https://chenlsimple998.github.io/vue/
     - theme: alt
-      text: Learn More
+      text: 文档笔记
       link: /guide/
 features:
   - title: cesium
