@@ -64,7 +64,7 @@ function getGuideSidebar() {
         },
         {
           text: '数字大屏',
-          link: ''
+          link: 'https://chenlsimple998.github.io/vue/'
         },
         {
           text: 'react',
@@ -72,11 +72,11 @@ function getGuideSidebar() {
         },
         {
           text: 'threejs',
-          link: '/guide/threejs'
+          link: 'https://chenlsimple998.github.io/vue/'
         },
         {
           text: 'cesium',
-          link: '/guide/cesium'
+          link: 'https://chenlsimple998.github.io/vue/'
         },
       ]
     }
