@@ -1,0 +1,45 @@
+import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.B4m4nbJy.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"guide/githubPages.md","filePath":"guide/githubPages.md","lastUpdated":1741169488000}'),l={name:"guide/githubPages.md"};function i(t,s,c,o,d,r){return p(),a("div",null,s[0]||(s[0]=[e(`<p>配置 GitHub Pages 登录 GitHub，进入你的项目仓库。 点击仓库的 “Settings” 选项卡。 在左侧导航栏中找到 “Pages”。 在 “Source” 部分，选择 gh-pages 分支，然后点击 “Save”。</p><p>github pages 部署配置 .github/workflows/deploy.yml</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>name: Deploy to GitHub Pages</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>on:</span></span>
+<span class="line"><span>  push:</span></span>
+<span class="line"><span>    branches:</span></span>
+<span class="line"><span>      - main</span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  deploy:</span></span>
+<span class="line"><span>    runs-on: ubuntu-latest</span></span>
+<span class="line"><span>    permissions:</span></span>
+<span class="line"><span>      contents: write  # 授予写入仓库内容的权限</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - uses: actions/checkout@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          fetch-depth: 0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Setup Node.js</span></span>
+<span class="line"><span>        uses: actions/setup-node@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          node-version: 20</span></span>
+<span class="line"><span>          cache: &#39;npm&#39;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Install npm</span></span>
+<span class="line"><span>        working-directory: ./docs</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          npm install</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Install dependencies</span></span>
+<span class="line"><span>        working-directory: ./docs</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          npm run docs:build     </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Build VitePress site</span></span>
+<span class="line"><span>        working-directory: ./docs</span></span>
+<span class="line"><span>        run: npm run docs:build</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Create .nojekyll file</span></span>
+<span class="line"><span>        run: touch ./docs/.vitepress/dist/.nojekyll</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Deploy to GitHub Pages</span></span>
+<span class="line"><span>        uses: peaceiris/actions-gh-pages@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          github_token: \${{ secrets.GITHUB_TOKEN }}</span></span>
+<span class="line"><span>          publish_dir: ./docs/.vitepress/dist</span></span></code></pre></div><p>当静态网站打包后样式不显示的时候可能是2种问题 1.nojekyll文件 2.config.mts里面的配置文件 里面的 base:&#39;&#39; 路径不对</p><p>注意.nojekyll .nojekyll” 是一个特殊的空文件，通常用于在使用 GitHub Pages 等基于 Jekyll 的静态网站托管服务时 而当你在仓库的根目录下放置一个名为 “.nojekyll” 的空文件时，它会告诉 GitHub Pages 不要使用 Jekyll 来处理你的网站，而是直接使用你仓库中的静态文件（如 HTML、CSS、JavaScript 文件等）来呈现网站，跳过 Jekyll 的构建过程</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>      - name: Create .nojekyll file</span></span>
+<span class="line"><span>        run: touch ./docs/.vitepress/dist/.nojekyll</span></span></code></pre></div><p>脚本里面授予写入仓库内容的权限</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>      contents: write  # 授予写入仓库内容的权限</span></span></code></pre></div>`,8)]))}const h=n(l,[["render",i]]);export{g as __pageData,h as default};
