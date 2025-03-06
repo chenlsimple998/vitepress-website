@@ -25,7 +25,7 @@ features:
   - title: react
     details: react+reactRouter+redux
   - title: 研发体系构建
-    details: CICD/NPM私服/CDN服务
+    details: CICD/NPM私服
   - title: 数字大屏
     details: 数字大屏案例
   - title: vitepress

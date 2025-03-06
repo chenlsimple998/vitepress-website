@@ -43,7 +43,8 @@ export default defineConfig({
     plugins: [demoblockVitePlugin(), vueJsx()],
     resolve: {
       alias: {
-        '@alias': path.resolve(__dirname, '../')
+        '@alias': path.resolve(__dirname, '../'),
+            '@images': '/docs/images'
       }
     }
   },

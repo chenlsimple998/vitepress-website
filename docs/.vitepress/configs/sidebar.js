@@ -59,6 +59,10 @@ function getGuideSidebar() {
           link: '/guide/CICD'
         },
         {
+          text: 'NPM私服',
+          link: '/guide/npm私服'
+        },
+        {
           text: 'webpack学习思维导图',
           link: 'https://note.youdao.com/s/YSWabFj8'
         },
@@ -66,10 +70,10 @@ function getGuideSidebar() {
           text: '数字大屏',
           link: 'https://github.com/chenlsimple998/vue'
         },
-        {
-          text: 'react',
-          link: ''
-        },
+        // {
+        //   text: 'react',
+        //   link: ''
+        // },
         {
           text: 'threejs',
           link: 'https://github.com/chenlsimple998/vue'
