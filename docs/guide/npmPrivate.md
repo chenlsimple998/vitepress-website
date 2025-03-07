@@ -34,7 +34,7 @@ packages:
 - **安装包**：执行`npm install [package name] --registry http://localhost:4873`，可以从私服安装所需的包。
 
 
-![verdaccio私服](/images/verdaccio.png)
+![案例](/public/verdaccio.png)
 - **details**
 
 [Verdaccio 客户端文档](https://verdaccio.org/zh-cn/docs/cli-registry/)

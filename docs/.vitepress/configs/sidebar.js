@@ -60,7 +60,7 @@ function getGuideSidebar() {
         },
         {
           text: 'NPM私服',
-          link: '/guide/npm私服'
+          link: '/guide/npmPrivate'
         },
         {
           text: 'webpack学习思维导图',

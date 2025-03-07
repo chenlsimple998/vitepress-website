@@ -1,8 +1,9 @@
 1、搭建 monorepo 环境
+```
 npm install pnpm -g # 全局安装pnpm
 pnpm init # 初始化package.json配置⽂件 私有库
 pnpm install vue typescript -D # 全局下添加依赖
-
+```
 `shamefully-hoist = true  // 作用依赖包都扁平化的安装在node_modules下面 `创建tsconfig.json文件
 
 ```{
@@ -82,6 +83,7 @@ cd theme-chalk && pnpm init
 cd utils && pnpm init
 ```
 这个时候需要手动修改每个包的名字，让其属于z-vue3-ui的子包，我们分别进行以下的修改，在对应package.json文件中修改其name属性的值。
+
 ```
 @chen-vue3-ui /components
 @chen-vue3-ui/theme-thalk
@@ -96,27 +98,28 @@ pnpm i @chen-vue3-ui/utils -w
 
 3、引入 scss，并式实现 Bem
 先手动在根目录下面创建如下目录
-
+```
 packages
     ├─components # 存放所有的组件
     ├─utils # 存放⼯具⽅法
     └─theme-chalk # 存放对应的样式
+```
 在执行下面的命令，在各自的根目录下面创建package.json文件。
 cd components && pnpm init
 cd theme-chalk && pnpm init
 cd utils && pnpm init
 这个时候需要手动修改每个包的名字，让其属于z-vue3-ui的子包，我们分别进行以下的修改，在对应package.json文件中修改其name属性的值。
-
+```
 @chen-vue3-ui /components
 @chen-vue3-ui/theme-thalk
 @chen-vue3-ui/utils;
-
+```
 然后执行一下命令，将这三个包安装在根目录下面，注意名字哦。
-
+```
 pnpm i @chen-vue3-ui/components -w
 pnpm i @chen-vue3-ui/theme-chalk -w
 pnpm i @chen-vue3-ui/utils -w
-
+```
 下面我们就开始实现Bem规范了。
 
 1. Bem Js 实现部分
@@ -202,7 +205,7 @@ export function createNamespace(name: string) {
 ```
 
 下面我们找个地方，说一下上面的bem怎么使用。因为现在我们的代码都是ems的，在node环境中跑起来不方便，所以就在play测试的小模块中演示了。
-
+```
 const bem = createNamespace("icon");
 
 console.log(bem.b());
@@ -210,9 +213,10 @@ console.log(bem.e("wrapper"));
 console.log(bem.m("disabled"));
 console.log(bem.is("checked", true));
 console.log(bem.bem("box", "element", "disabled"));
-
+```
 
 2. Bem scss 部分
+```
 theme-chalk
 ├── package.json
 └── src
@@ -221,7 +225,7 @@ theme-chalk
     ├── mixins
     │   ├── config.scss
     │   └── mixins.scss
-
+```
 config.scss
 
 $namespace: "z";
@@ -307,6 +311,7 @@ icon.scss
 ```
 4. 编写 Icon 组件
 目录结构如下：
+```
 components
 ├── icon
 │   ├── index.ts
@@ -314,7 +319,7 @@ components
 │       ├── icon.ts
 │       └── icon.vue
 └── package.json
-
+```
 icon.vue
 ```
 <template>
@@ -396,7 +401,7 @@ export function withInstall<T>(comp: T) {
   return comp as withInstallSFC<T>;
 }
 ```
-
+```
 play
 ├── README.md
 ├── index.html
@@ -411,7 +416,7 @@ play
 ├── tsconfig.json
 ├── tsconfig.node.json
 └── vite.config.ts
-
+```
 并且在main.ts中引入样式文件，并安装sass包
 
 mian.ts
@@ -571,11 +576,12 @@ pnpm run docs:dev
 
 4. 主题配置
 .vitepress/theme/index.ts
+
 ```
 import DefaultTheme from "vitepress/theme";
 import "@chen-vue3-ui/theme-chalk/src/index.scss";
 import xIcon from "@chen-vue3-ui/components/icon";
-
+```
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
