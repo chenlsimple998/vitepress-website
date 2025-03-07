@@ -1,4 +1,6 @@
-import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"guide/monorepo.md","filePath":"guide/monorepo.md","lastUpdated":1741169488000}'),l={name:"guide/monorepo.md"};function t(i,s,o,c,u,m){return p(),a("div",null,s[0]||(s[0]=[e(`<p>1、搭建 monorepo 环境 npm install pnpm -g # 全局安装pnpm pnpm init # 初始化package.json配置⽂件 私有库 pnpm install vue typescript -D # 全局下添加依赖</p><p><code>shamefully-hoist = true // 作用依赖包都扁平化的安装在node_modules下面 </code>创建tsconfig.json文件</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span></span></span>
+import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"guide/monorepo.md","filePath":"guide/monorepo.md","lastUpdated":1741355422000}'),l={name:"guide/monorepo.md"};function i(t,s,c,o,u,d){return p(),a("div",null,s[0]||(s[0]=[e(`<p>1、搭建 monorepo 环境</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>npm install pnpm -g # 全局安装pnpm</span></span>
+<span class="line"><span>pnpm init # 初始化package.json配置⽂件 私有库</span></span>
+<span class="line"><span>pnpm install vue typescript -D # 全局下添加依赖</span></span></code></pre></div><p><code>shamefully-hoist = true // 作用依赖包都扁平化的安装在node_modules下面 </code>创建tsconfig.json文件</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span></span></span>
 <span class="line"><span>&quot;compilerOptions&quot;: {</span></span>
 <span class="line"><span>&quot;module&quot;: &quot;ESNext&quot;,</span><span> // 打包模块类型ESNext</span></span>
 <span class="line"><span>&quot;declaration&quot;: false,</span><span> // 默认不要声明⽂件</span></span>
@@ -45,7 +47,14 @@ import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r
 <span class="line"><span>@chen-vue3-ui/theme-thalk</span></span>
 <span class="line"><span>@chen-vue3-ui/utils;</span></span></code></pre></div><p>然后执行一下命令，将这三个包安装在根目录下面，注意名字哦。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>pnpm i @chen-vue3-ui/components -w</span></span>
 <span class="line"><span>pnpm i @chen-vue3-ui/theme-chalk -w</span></span>
-<span class="line"><span>pnpm i @chen-vue3-ui/utils -w</span></span></code></pre></div><p>3、引入 scss，并式实现 Bem 先手动在根目录下面创建如下目录</p><p>packages ├─components # 存放所有的组件 ├─utils # 存放⼯具⽅法 └─theme-chalk # 存放对应的样式 在执行下面的命令，在各自的根目录下面创建package.json文件。 cd components &amp;&amp; pnpm init cd theme-chalk &amp;&amp; pnpm init cd utils &amp;&amp; pnpm init 这个时候需要手动修改每个包的名字，让其属于z-vue3-ui的子包，我们分别进行以下的修改，在对应package.json文件中修改其name属性的值。</p><p>@chen-vue3-ui /components @chen-vue3-ui/theme-thalk @chen-vue3-ui/utils;</p><p>然后执行一下命令，将这三个包安装在根目录下面，注意名字哦。</p><p>pnpm i @chen-vue3-ui/components -w pnpm i @chen-vue3-ui/theme-chalk -w pnpm i @chen-vue3-ui/utils -w</p><p>下面我们就开始实现Bem规范了。</p><ol><li>Bem Js 实现部分 先来实现在js中创建class的几个函数。</li></ol><p>utils/create.ts</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>// block 代码块</span></span>
+<span class="line"><span>pnpm i @chen-vue3-ui/utils -w</span></span></code></pre></div><p>3、引入 scss，并式实现 Bem 先手动在根目录下面创建如下目录</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>packages</span></span>
+<span class="line"><span>    ├─components # 存放所有的组件</span></span>
+<span class="line"><span>    ├─utils # 存放⼯具⽅法</span></span>
+<span class="line"><span>    └─theme-chalk # 存放对应的样式</span></span></code></pre></div><p>在执行下面的命令，在各自的根目录下面创建package.json文件。 cd components &amp;&amp; pnpm init cd theme-chalk &amp;&amp; pnpm init cd utils &amp;&amp; pnpm init 这个时候需要手动修改每个包的名字，让其属于z-vue3-ui的子包，我们分别进行以下的修改，在对应package.json文件中修改其name属性的值。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>@chen-vue3-ui /components</span></span>
+<span class="line"><span>@chen-vue3-ui/theme-thalk</span></span>
+<span class="line"><span>@chen-vue3-ui/utils;</span></span></code></pre></div><p>然后执行一下命令，将这三个包安装在根目录下面，注意名字哦。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>pnpm i @chen-vue3-ui/components -w</span></span>
+<span class="line"><span>pnpm i @chen-vue3-ui/theme-chalk -w</span></span>
+<span class="line"><span>pnpm i @chen-vue3-ui/utils -w</span></span></code></pre></div><p>下面我们就开始实现Bem规范了。</p><ol><li>Bem Js 实现部分 先来实现在js中创建class的几个函数。</li></ol><p>utils/create.ts</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>// block 代码块</span></span>
 <span class="line"><span>// element 元素</span></span>
 <span class="line"><span>// modifier 装饰</span></span>
 <span class="line"><span></span></span>
@@ -119,7 +128,20 @@ import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r
 <span class="line"><span>export function createNamespace(name: string) {</span></span>
 <span class="line"><span>  const prefixName = \`z-\${name}\`;</span></span>
 <span class="line"><span>  return createBEM(prefixName);</span></span>
-<span class="line"><span>}</span></span></code></pre></div><p>下面我们找个地方，说一下上面的bem怎么使用。因为现在我们的代码都是ems的，在node环境中跑起来不方便，所以就在play测试的小模块中演示了。</p><p>const bem = createNamespace(&quot;icon&quot;);</p><p>console.log(bem.b()); console.log(bem.e(&quot;wrapper&quot;)); console.log(bem.m(&quot;disabled&quot;)); console.log(bem.is(&quot;checked&quot;, true)); console.log(bem.bem(&quot;box&quot;, &quot;element&quot;, &quot;disabled&quot;));</p><ol start="2"><li>Bem scss 部分 theme-chalk ├── package.json └── src ├── icon.scss ├── index.scss ├── mixins │ ├── config.scss │ └── mixins.scss</li></ol><p>config.scss</p><p>$namespace: &quot;z&quot;; $element-separator: &quot;__&quot;; // 元素连接符 $modifier-separator: &quot;--&quot;; // 修饰符连接符 $state-prefix: &quot;is-&quot;; // 状态连接符</p><ul><li>{ box-sizing: border-box; }</li></ul><p>mixins.scss</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>@use &quot;config&quot; as *;</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>下面我们找个地方，说一下上面的bem怎么使用。因为现在我们的代码都是ems的，在node环境中跑起来不方便，所以就在play测试的小模块中演示了。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>const bem = createNamespace(&quot;icon&quot;);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>console.log(bem.b());</span></span>
+<span class="line"><span>console.log(bem.e(&quot;wrapper&quot;));</span></span>
+<span class="line"><span>console.log(bem.m(&quot;disabled&quot;));</span></span>
+<span class="line"><span>console.log(bem.is(&quot;checked&quot;, true));</span></span>
+<span class="line"><span>console.log(bem.bem(&quot;box&quot;, &quot;element&quot;, &quot;disabled&quot;));</span></span></code></pre></div><ol start="2"><li>Bem scss 部分</li></ol><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>theme-chalk</span></span>
+<span class="line"><span>├── package.json</span></span>
+<span class="line"><span>└── src</span></span>
+<span class="line"><span>    ├── icon.scss</span></span>
+<span class="line"><span>    ├── index.scss</span></span>
+<span class="line"><span>    ├── mixins</span></span>
+<span class="line"><span>    │   ├── config.scss</span></span>
+<span class="line"><span>    │   └── mixins.scss</span></span></code></pre></div><p>config.scss</p><p>$namespace: &quot;z&quot;; $element-separator: &quot;__&quot;; // 元素连接符 $modifier-separator: &quot;--&quot;; // 修饰符连接符 $state-prefix: &quot;is-&quot;; // 状态连接符</p><ul><li>{ box-sizing: border-box; }</li></ul><p>mixins.scss</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>@use &quot;config&quot; as *;</span></span>
 <span class="line"><span>@forward &quot;config&quot;;</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>// z-icon</span></span>
@@ -176,7 +198,13 @@ import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r
 <span class="line"><span>  svg.loading {</span></span>
 <span class="line"><span>    animation: transform 1s linear infinite;</span></span>
 <span class="line"><span>  }</span></span>
-<span class="line"><span>}</span></span></code></pre></div><ol start="4"><li>编写 Icon 组件 目录结构如下： components ├── icon │ ├── index.ts │ └── src │ ├── icon.ts │ └── icon.vue └── package.json</li></ol><p>icon.vue</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>&lt;template&gt;</span></span>
+<span class="line"><span>}</span></span></code></pre></div><ol start="4"><li>编写 Icon 组件 目录结构如下：</li></ol><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>components</span></span>
+<span class="line"><span>├── icon</span></span>
+<span class="line"><span>│   ├── index.ts</span></span>
+<span class="line"><span>│   └── src</span></span>
+<span class="line"><span>│       ├── icon.ts</span></span>
+<span class="line"><span>│       └── icon.vue</span></span>
+<span class="line"><span>└── package.json</span></span></code></pre></div><p>icon.vue</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>&lt;template&gt;</span></span>
 <span class="line"><span>  &lt;i :class=&quot;bem.b()&quot; :style=&quot;style&quot;&gt;</span></span>
 <span class="line"><span>    &lt;slot&gt;&lt;/slot&gt;</span></span>
 <span class="line"><span>  &lt;/i&gt;</span></span>
@@ -234,7 +262,20 @@ import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r
 <span class="line"><span>    app.component(name, comp); // 这一块的类型还有点问题，还在研究中。</span></span>
 <span class="line"><span>  };</span></span>
 <span class="line"><span>  return comp as withInstallSFC&lt;T&gt;;</span></span>
-<span class="line"><span>}</span></span></code></pre></div><p>play ├── README.md ├── index.html ├── package.json ├── pnpm-lock.yaml ├── public │ └── vite.svg ├── src │ ├── App.vue │ ├── assets │ └── main.ts ├── tsconfig.json ├── tsconfig.node.json └── vite.config.ts</p><p>并且在main.ts中引入样式文件，并安装sass包</p><p>mian.ts</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>import { createApp } from &quot;vue&quot;;</span></span>
+<span class="line"><span>}</span></span></code></pre></div><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>play</span></span>
+<span class="line"><span>├── README.md</span></span>
+<span class="line"><span>├── index.html</span></span>
+<span class="line"><span>├── package.json</span></span>
+<span class="line"><span>├── pnpm-lock.yaml</span></span>
+<span class="line"><span>├── public</span></span>
+<span class="line"><span>│   └── vite.svg</span></span>
+<span class="line"><span>├── src</span></span>
+<span class="line"><span>│   ├── App.vue</span></span>
+<span class="line"><span>│   ├── assets</span></span>
+<span class="line"><span>│   └── main.ts</span></span>
+<span class="line"><span>├── tsconfig.json</span></span>
+<span class="line"><span>├── tsconfig.node.json</span></span>
+<span class="line"><span>└── vite.config.ts</span></span></code></pre></div><p>并且在main.ts中引入样式文件，并安装sass包</p><p>mian.ts</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>import { createApp } from &quot;vue&quot;;</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>import &quot;@chen-vue3-ui/theme-chalk/src/index.scss&quot;;</span></span>
 <span class="line"><span>import App from &quot;./App.vue&quot;;</span></span>
@@ -304,6 +345,15 @@ import{_ as n,c as a,o as p,ao as e}from"./chunks/framework.BO3ojR9h.js";const r
 <span class="line"><span>或者使用vitepress cli生成</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>4. 主题配置</span></span>
-<span class="line"><span>.vitepress/theme/index.ts</span></span></code></pre></div><p>import DefaultTheme from &quot;vitepress/theme&quot;; import &quot;@chen-vue3-ui/theme-chalk/src/index.scss&quot;; import xIcon from &quot;@chen-vue3-ui/components/icon&quot;;</p><p>export default { ...DefaultTheme, enhanceApp({ app }) { app.use(xIcon); // 注册组件 }, };</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>添加vite.config.ts让vite也可以支持defineOptions。</span></span>
+<span class="line"><span>.vitepress/theme/index.ts</span></span></code></pre></div><p>import DefaultTheme from &quot;vitepress/theme&quot;; import &quot;@chen-vue3-ui/theme-chalk/src/index.scss&quot;; import xIcon from &quot;@chen-vue3-ui/components/icon&quot;;</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>export default {</span></span>
+<span class="line"><span>  ...DefaultTheme,</span></span>
+<span class="line"><span>  enhanceApp({ app }) {</span></span>
+<span class="line"><span>    app.use(xIcon); // 注册组件</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>};</span></span></code></pre></div><p>添加vite.config.ts让vite也可以支持defineOptions。</p><p>vite.config.ts</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>import { defineConfig } from &quot;vite&quot;;</span></span>
+<span class="line"><span>import DefineOptions from &quot;unplugin-vue-define-options/vite&quot;;</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>vite.config.ts</span></span></code></pre></div><p>import { defineConfig } from &quot;vite&quot;; import DefineOptions from &quot;unplugin-vue-define-options/vite&quot;;</p><p>// <a href="https://vitejs.dev/config/" target="_blank" rel="noreferrer">https://vitejs.dev/config/</a> export default defineConfig({ plugins: [DefineOptions()], });</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span></span></span></code></pre></div>`,89)]))}const g=n(l,[["render",t]]);export{r as __pageData,g as default};
+<span class="line"><span>// https://vitejs.dev/config/</span></span>
+<span class="line"><span>export default defineConfig({</span></span>
+<span class="line"><span>  plugins: [DefineOptions()],</span></span>
+<span class="line"><span>});</span></span></code></pre></div>`,91)]))}const h=n(l,[["render",i]]);export{r as __pageData,h as default};
